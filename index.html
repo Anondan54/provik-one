@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Provik One PLLC</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+:root{
+--black:#080808;
+--white:#ffffff;
+--red:#d71920;
+--darkred:#9f1117;
+--gray:#f4f4f4;
+}
+
+body{
+background:white;
+color:#111;
+line-height:1.6;
+}
+
+header{
+min-height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.82)),
+radial-gradient(circle at top right, #d71920 0%, transparent 35%),
+#080808;
+color:white;
+display:flex;
+flex-direction:column;
+}
+
+nav{
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.92);
+border-bottom:3px solid var(--red);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+height:65px;
+background:white;
+padding:5px;
+border-radius:10px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--red);
+}
+
+.language-buttons{
+display:flex;
+gap:10px;
+margin-left:20px;
+}
+
+.language-buttons button{
+background:transparent;
+border:1px solid white;
+color:white;
+padding:7px 12px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.language-buttons button.active{
+background:var(--red);
+border-color:var(--red);
+}
+
+.hero{
+flex:1;
+display:flex;
+align-items:center;
+padding:80px 8%;
+}
+
+.hero-content h1{
+font-size:clamp(42px, 7vw, 78px);
+line-height:1.05;
+margin-bottom:20px;
+max-width:850px;
+}
+
+.hero-content p{
+font-size:21px;
+max-width:700px;
+margin-bottom:30px;
+color:#eee;
+}
+
+.btn-group{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+display:inline-block;
+padding:14px 24px;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+.btn-primary{
+background:var(--red);
+color:white;
+}
+
+.btn-primary:hover{
+background:var(--darkred);
+transform:translateY(-3px);
+}
+
+.btn-secondary{
+background:white;
+color:black;
+}
+
+.btn-secondary:hover{
+transform:translateY(-3px);
+}
+
+section{
+padding:80px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:38px;
+margin-bottom:15px;
+}
+
+.section-title span{
+color:var(--red);
+}
+
+.section-subtitle{
+text-align:center;
+max-width:700px;
+margin:0 auto 45px;
+color:#555;
+font-size:18px;
+}
+
+.services{
+background:var(--gray);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+gap:24px;
+}
+
+.card{
+background:white;
+padding:28px;
+border-radius:20px;
+border-top:5px solid var(--red);
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.card h3{
+margin-bottom:10px;
+font-size:22px;
+}
+
+.card p{
+color:#555;
+margin-bottom:18px;
+}
+
+.small-whatsapp{
+display:inline-block;
+padding:10px 16px;
+background:black;
+color:white;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+font-size:14px;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery-photo{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.about{
+background:black;
+color:white;
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+gap:40px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:20px;
+background:white;
+padding:10px;
+}
+
+.about h2{
+font-size:38px;
+margin-bottom:20px;
+}
+
+.about span{
+color:var(--red);
+}
+
+.about p{
+color:#ddd;
+margin-bottom:15px;
+font-size:18px;
+}
+
+.contact-box{
+max-width:900px;
+margin:auto;
+background:white;
+border:2px solid black;
+border-radius:25px;
+padding:45px 25px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.contact-box h2{
+font-size:36px;
+margin-bottom:15px;
+}
+
+.contact-box p{
+color:#555;
+margin-bottom:25px;
+font-size:18px;
+}
+
+iframe{
+border-radius:20px;
+margin-top:20px;
+}
+
+footer{
+text-align:center;
+padding:30px 8%;
+background:black;
+color:#bbb;
+border-top:4px solid var(--red);
+}
+
+.floating-whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25d366;
+color:black;
+width:62px;
+height:62px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+z-index:999;
+}
+
+[data-lang="es"]{
+display:none;
+}
+
+body.spanish [data-lang="en"]{
+display:none;
+}
+
+body.spanish [data-lang="es"]{
+display:block;
+}
+
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+gap:15px;
+}
+
+nav ul{
+justify-content:center;
+}
+
+.hero{
+text-align:center;
+justify-content:center;
+}
+
+.btn-group{
+justify-content:center;
+}
+
+.logo{
+max-width:260px;
+height:auto;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<img src="logo.jpg" class="logo">
+
+<div style="display:flex; align-items:center; flex-wrap:wrap; justify-content:center;">
+
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#gallery">Photos</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="language-buttons">
+<button id="englishBtn" class="active" onclick="setLanguage('en')">EN</button>
+<button id="spanishBtn" onclick="setLanguage('es')">ES</button>
+</div>
+
+</div>
+
+</nav>
+
+<div class="hero">
+
+<div class="hero-content">
+
+<div data-lang="en">
+<h1>Registrations, Insurance & Vehicle Services</h1>
+
+<p>
+Fast and reliable help for title transfers,
+renewals, bonds, salvage titles, insurance,
+sales and state inspections.
+</p>
+</div>
+
+<div data-lang="es">
+<h1>Registros, Seguros y Servicios de Vehículos</h1>
+
+<p>
+Ayuda rápida y confiable con cambios de título,
+renovaciones, bonos, títulos salvage, seguros,
+ventas e inspecciones estatales.
+</p>
+</div>
+
+<div class="btn-group">
+
+<a class="btn btn-primary"
+id="mainWhatsapp"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20vehicle%20services."
+target="_blank">
+WhatsApp
+</a>
+
+<a class="btn btn-secondary"
+href="#services">
+View Services
+</a>
+
+<a class="btn btn-secondary"
+href="#location">
+Location
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<section id="services" class="services">
+
+<h2 class="section-title" data-lang="en">
+Our <span>Services</span>
+</h2>
+
+<h2 class="section-title" data-lang="es">
+Nuestros <span>Servicios</span>
+</h2>
+
+<p class="section-subtitle" data-lang="en">
+Professional help for registrations, insurance and vehicle paperwork.
+</p>
+
+<p class="section-subtitle" data-lang="es">
+Ayuda profesional para registros, seguros y trámites vehiculares.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>Title Transfers</h3>
+
+<p data-lang="en">
+Vehicle title transfer assistance.
+</p>
+
+<p data-lang="es">
+Ayuda con cambios de título vehicular.
+</p>
+
+<a class="small-whatsapp"
+id="titleTransferBtn"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20title%20transfers."
+target="_blank">
+WhatsApp
+</a>
+</div>
+
+<div class="card">
+<h3>Bonds</h3>
+
+<p data-lang="en">
+Support with bonded title paperwork.
+</p>
+
+<p data-lang="es">
+Apoyo con trámites bonded title.
+</p>
+
+<a class="small-whatsapp"
+id="bondsBtn"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20bonds."
+target="_blank">
+WhatsApp
+</a>
+</div>
+
+<div class="card">
+<h3>Renewals</h3>
+
+<p data-lang="en">
+Registration renewal assistance.
+</p>
+
+<p data-lang="es">
+Ayuda con renovaciones de registro.
+</p>
+
+<a class="small-whatsapp"
+id="renewalsBtn"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20renewals."
+target="_blank">
+WhatsApp
+</a>
+</div>
+
+<div class="card">
+<h3>Salvage Titles</h3>
+
+<p data-lang="en">
+Help with salvage title paperwork.
+</p>
+
+<p data-lang="es">
+Ayuda con trámites salvage.
+</p>
+
+<a class="small-whatsapp"
+id="salvageBtn"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20salvage%20titles."
+target="_blank">
+WhatsApp
+</a>
+</div>
+
+<div class="card">
+<h3>Sales</h3>
+
+<p data-lang="en">
+Vehicle sales assistance and support.
+</p>
+
+<p data-lang="es">
+Ayuda y apoyo para ventas de vehículos.
+</p>
+
+<a class="small-whatsapp"
+id="salesBtn"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20vehicle%20sales."
+target="_blank">
+WhatsApp
+</a>
+</div>
+
+<div class="card">
+<h3>Insurance</h3>
+
+<p data-lang="en">
+Insurance quotes and information.
+</p>
+
+<p data-lang="es">
+Cotizaciones e información de seguros.
+</p>
+
+<a class="small-whatsapp"
+id="insuranceBtn"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20insurance."
+target="_blank">
+WhatsApp
+</a>
+</div>
+
+<div class="card">
+<h3>State Inspections</h3>
+
+<p data-lang="en">
+Official Texas state inspections.
+</p>
+
+<p data-lang="es">
+Inspecciones oficiales del estado de Texas.
+</p>
+
+<a class="small-whatsapp"
+id="inspectionBtn"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20state%20inspections."
+target="_blank">
+WhatsApp
+</a>
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery">
+
+<h2 class="section-title" data-lang="en">
+Business <span>Photos</span>
+</h2>
+
+<h2 class="section-title" data-lang="es">
+Fotos del <span>Negocio</span>
+</h2>
+
+<div class="gallery-grid">
+
+<img src="business-photo-1.jpg" class="gallery-photo">
+
+<img src="business-photo-2.jpg" class="gallery-photo">
+
+<img src="business-photo-3.jpg" class="gallery-photo">
+
+</div>
+
+</section>
+
+<section class="about">
+
+<div>
+<img src="logo.jpg">
+</div>
+
+<div>
+
+<div data-lang="en">
+<h2>About <span>Provik One PLLC</span></h2>
+
+<p>
+We help customers with registrations,
+insurance and vehicle-related services.
+</p>
+
+<p>
+Fast, professional and reliable support.
+</p>
+</div>
+
+<div data-lang="es">
+<h2>Acerca de <span>Provik One PLLC</span></h2>
+
+<p>
+Ayudamos a clientes con registros,
+seguros y servicios relacionados con vehículos.
+</p>
+
+<p>
+Servicio rápido, profesional y confiable.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="contact-box">
+
+<h2 data-lang="en">Contact Us</h2>
+<h2 data-lang="es">Contáctanos</h2>
+
+<p data-lang="en">
+Message us on WhatsApp for quotes or questions.
+</p>
+
+<p data-lang="es">
+Mándanos mensaje por WhatsApp para cotizaciones o preguntas.
+</p>
+
+<div class="btn-group" style="justify-content:center;">
+
+<a class="btn btn-primary"
+id="contactWhatsapp1"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20more%20information."
+target="_blank">
+915 487 7344
+</a>
+
+<a class="btn btn-secondary"
+id="contactWhatsapp2"
+href="https://wa.me/19153520688?text=Hello%20I%20need%20more%20information."
+target="_blank">
+915 352 0688
+</a>
+
+</div>
+
+<div style="margin-top:30px;">
+
+<a class="btn btn-secondary"
+href="mailto:info@provikinsurance.net">
+info@provikinsurance.net
+</a>
+
+</div>
+
+<div id="location" style="margin-top:40px;">
+
+<h3 style="margin-bottom:15px;">
+Location / Ubicación
+</h3>
+
+<p style="margin-bottom:20px; font-size:18px;">
+
+<a href="https://maps.google.com/?q=9945+Alameda+Ave,+El+Paso,+TX+79927"
+target="_blank"
+style="color:#d71920; font-weight:bold; text-decoration:none;">
+
+9945 Alameda Ave, El Paso, TX 79927
+
+</a>
+
+</p>
+
+<div class="btn-group" style="justify-content:center; margin-bottom:25px;">
+
+<a class="btn btn-primary"
+href="https://maps.google.com/?q=9945+Alameda+Ave,+El+Paso,+TX+79927"
+target="_blank">
+Open in Google Maps
+</a>
+
+</div>
+
+<iframe
+src="https://www.google.com/maps?q=9945+Alameda+Ave,+El+Paso,+TX+79927&output=embed"
+width="100%"
+height="350"
+style="border:0;"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Provik One PLLC. All rights reserved.
+</footer>
+
+<a class="floating-whatsapp"
+id="floatingWhatsapp"
+href="https://wa.me/19154877344?text=Hello%20I%20need%20more%20information."
+target="_blank">
+☎
+</a>
+
+<script>
+
+function setLanguage(language){
+
+const body=document.body;
+
+const englishBtn=document.getElementById("englishBtn");
+const spanishBtn=document.getElementById("spanishBtn");
+
+if(language==="es"){
+body.classList.add("spanish");
+spanishBtn.classList.add("active");
+englishBtn.classList.remove("active");
+
+document.getElementById("mainWhatsapp").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20servicios%20vehiculares.";
+
+document.getElementById("titleTransferBtn").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20cambios%20de%20titulo.";
+
+document.getElementById("bondsBtn").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20bonded%20titles.";
+
+document.getElementById("renewalsBtn").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20renovaciones.";
+
+document.getElementById("salvageBtn").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20salvage%20titles.";
+
+document.getElementById("salesBtn").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20ventas%20de%20vehiculos.";
+
+document.getElementById("insuranceBtn").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20seguros.";
+
+document.getElementById("inspectionBtn").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20ayuda%20con%20inspecciones%20estatales.";
+
+document.getElementById("contactWhatsapp1").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20mas%20informacion.";
+
+document.getElementById("contactWhatsapp2").href =
+"https://wa.me/19153520688?text=Hola%20necesito%20mas%20informacion.";
+
+document.getElementById("floatingWhatsapp").href =
+"https://wa.me/19154877344?text=Hola%20necesito%20mas%20informacion.";
+
+}else{
+body.classList.remove("spanish");
+englishBtn.classList.add("active");
+spanishBtn.classList.remove("active");
+
+document.getElementById("mainWhatsapp").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20vehicle%20services.";
+
+document.getElementById("titleTransferBtn").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20title%20transfers.";
+
+document.getElementById("bondsBtn").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20bonds.";
+
+document.getElementById("renewalsBtn").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20renewals.";
+
+document.getElementById("salvageBtn").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20salvage%20titles.";
+
+document.getElementById("salesBtn").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20vehicle%20sales.";
+
+document.getElementById("insuranceBtn").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20insurance.";
+
+document.getElementById("inspectionBtn").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20help%20with%20state%20inspections.";
+
+document.getElementById("contactWhatsapp1").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20more%20information.";
+
+document.getElementById("contactWhatsapp2").href =
+"https://wa.me/19153520688?text=Hello%20I%20need%20more%20information.";
+
+document.getElementById("floatingWhatsapp").href =
+"https://wa.me/19154877344?text=Hello%20I%20need%20more%20information.";
+}
+
+}
+
+</script>
+
+</body>
+</html>
